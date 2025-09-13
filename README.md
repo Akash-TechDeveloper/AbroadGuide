@@ -57,8 +57,9 @@ graph TD;
     B --> C[Immigration & PR]
     C --> D[Country Guides]
     D --> E[Tips & Resources]
-    E --> F[Global Community Contributions]
-🛠️ How to Use
+    E --> F[Community Contributions]
+
+🛠 How to Use
 Clone this repository:
 
 bash
