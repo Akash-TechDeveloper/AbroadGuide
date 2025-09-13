@@ -41,16 +41,8 @@ Stay informed with our newest additions 🚀
 
 ---
 
-## 🎯 Key Features
-✔️ Comprehensive **study/work abroad checklists**  
-✔️ Step-by-step **visa & immigration guidance**  
-✔️ Country-specific **living & cost guides**  
-✔️ Practical **student & job-seeker tips**  
-✔️ Regular **updates** to keep info fresh  
-
----
-
 ## 📊 Roadmap (Visual)
+
 ```mermaid
 graph TD;
     A[Study Abroad] --> B[Work Abroad]
@@ -58,8 +50,7 @@ graph TD;
     C --> D[Country Guides]
     D --> E[Tips & Resources]
     E --> F[Community Contributions]
------------------
- How to Use
+🛠️ How to Use
 Clone this repository:
 
 bash
