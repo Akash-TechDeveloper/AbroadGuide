@@ -58,8 +58,8 @@ graph TD;
     C --> D[Country Guides]
     D --> E[Tips & Resources]
     E --> F[Community Contributions]
-
-🛠 How to Use
+-----------------
+ How to Use
 Clone this repository:
 
 bash
