@@ -50,9 +50,8 @@ graph TD;
     C --> D[Country Guides]
     D --> E[Tips & Resources]
     E --> F[Community Contributions]
-🛠️ How to Use
-Clone this repository:
 
+Clone this Repo--------->
 bash
 Copy code
 git clone https://github.com/Akash-TechDeveloper/AbroadGuide.git
