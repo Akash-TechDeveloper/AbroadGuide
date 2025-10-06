@@ -1,79 +1,99 @@
-<!-- Banner -->
-<h1 align="center">🌍 AbroadGuide ✈️</h1>
-<p align="center">
-  <b>Your ultimate companion for studying, working, and settling abroad — from visas to universities to job opportunities</b>
-</p>
+<div align="center">
+  <h1 style="font-size: 48px; font-weight: bold;">AbroadGuide: AI-Powered Companion for<br>International Students Moving Abroad</h1>
+</div>
+
+<div align="center">
+  <img src="documents/AbroadGuide_logo.png" alt="AbroadGuide" width="200">
+</div>
+
+**AbroadGuide** (Spring Boot version) is a backend-powered web application helping international students find housing, navigate local services, and receive university-specific guidance efficiently.
+
+## Table of Contents
+- [1. Motivation 🌎](#1-motivation-)
+  - [Background](#background)
+  - [Common Challenges Faced by International Students](#common-challenges-faced-by-international-students)
+  - [Goals & Value Proposition](#goals--value-proposition)
+- [2. Overview of AbroadGuide 🗺️](#2-overview-of-abroadguide-)
+  - [Key Features](#key-features)
+  - [Methodology](#methodology)
+  - [Data](#data)
+  - [Code Structure](#code-structure)
+- [3. User Interface 💻](#3-user-interface-)
+  - [Backend & API](#backend--api)
+  - [Demo](#demo)
+- [4. Evaluation & Testing 📊](#4-evaluation--testing-)
+  - [Evaluation Framework and Results](#evaluation-framework-and-results)
+  - [User Testing](#user-testing)
+- [5. Differentiators ✨](#5-differentiators-)
+  - [Comparison with Other Tools](#comparison-with-other-tools)
+- [6. Future Work 🚀](#6-future-work)
+- [7. Conclusion 🎓](#7-conclusion)
+- [8. Tools Used 🛠️](#8-tools-used-)
+- [9. References 📚](#9-references)
+- [10. Acknowledgements/About Us 👤](#10-acknowledgementsabout-us)
 
 ---
 
-## ✨ Why AbroadGuide?
-Moving abroad can be overwhelming. This repository makes it **simple and structured**:  
-- 🎓 **Study Abroad** → Applications, scholarships, exams, and visa process  
-- 💼 **Work Abroad** → Job search tips, work permits, CV guidance  
-- 🛂 **Immigration** → Country-specific PR & citizenship guides  
-- 🌍 **Country Guides** → Local culture, cost of living, checklists  
-- 🧳 **Tips & Resources** → Survival hacks, banking, travel, networking  
+## 1. Motivation 🌎
+
+### Background
+AbroadGuide was inspired by the common difficulties international students face when moving abroad. From understanding visa requirements to finding safe housing and navigating local services, many students struggle to find reliable guidance. AbroadGuide leverages **Spring Boot, MySQL, and REST APIs** to provide a scalable and secure solution.
+
+<div align="center">
+  <img src="documents/Problem_Statement_I.jpg">
+</div>
+
+The growth of international students worldwide highlights a demand for platforms like AbroadGuide. By providing real-time information and API-driven guidance, students can plan their move more confidently.
+
+<div align="center">
+  <img src="documents/Problem_Statement_II.jpg">
+</div>
+
+### Common Challenges Faced by International Students
+- **Legal and Visa Requirements**: e.g., steps to obtain F-1 visa, maintaining status while abroad.
+- **Housing**: Safe, affordable accommodation and lease understanding.
+- **Cultural Differences**: Local norms, etiquette, and language barriers.
+- **Logistics**: Bank accounts, health insurance, transportation, etc.
+
+<div align="center">
+  <img src="documents/Problem_Statement_III.jpg">
+</div>
+
+AbroadGuide bridges these gaps with housing APIs, local guidance endpoints, and university-specific support.
+
+### Goals & Value Proposition
+- Efficient, secure backend for international student services.
+- Tailored housing and local guidance using APIs.
+- Reliable legal and logistical advice.
+- Empathetic, scalable, and trustworthy support.
+
+<div align="center">
+  <img src="documents/AbroadGuide_Intro.jpg">
+</div>
 
 ---
 
-## 📂 Repository Structure
-AbroadGuide/
-│── 📁 StudyAbroad/
-│── 📁 WorkAbroad/
-│── 📁 Immigration/
-│── 📁 CountryGuides/
-│── 📁 TipsResources/
-│── 📄 README.md
+## 2. Overview of AbroadGuide 🗺️
 
-yaml
-Copy code
+<div align="center">
+  <img src="documents/Architecture_Diagram_24at.png">
+</div>
 
----
+### Key Features
+- **Housing API**: Filtered search for safe, student-friendly housing.
+- **Local Services API**: Nearby amenities, restaurants, transport, and cultural hotspots.
+- **University Guidance API**: School-specific advice, legal info, and visa guidance.
+- **Interactive Map Support**: Returns location-based data for front-end visualization.
 
-## 🆕 Latest Updates
-Stay informed with our newest additions 🚀  
+### Methodology
+- **Spring Boot Backend**: Provides RESTful APIs with JWT authentication.
+- **Role-Based Access**: STUDENT, UNIVERSITY, SPONSOR, ADMIN.
+- **Integration with APIs**: Google Maps, external housing sources.
+- **RAG-Like Approach**: Using curated datasets for accurate and context-aware responses.
 
-| Date       | Update Description |
-|------------|--------------------|
-| **2025-09-06** | 🇨🇦 Added **Canada Student Visa Full Guide** |
-| **2025-08-30** | ✈️ Updated **Work Abroad Opportunities (USA & UK)** |
-| **2025-08-15** | 🌍 Launched **AbroadGuide Initial Version** |
+### Data
+- **Housing Data**: From external property APIs.
+- **Local Services**: Google Maps API for accurate location info.
+- **University Guides**: Curated legal and logistical info from official sources.
 
----
-
-## 📊 Roadmap (Visual)
-
-```mermaid
-graph TD;
-    A[Study Abroad] --> B[Work Abroad]
-    B --> C[Immigration & PR]
-    C --> D[Country Guides]
-    D --> E[Tips & Resources]
-    E --> F[Community Contributions]
-
-Clone this Repo--------->
-bash
-Copy code
-git clone https://github.com/Akash-TechDeveloper/AbroadGuide.git
-cd AbroadGuide
-Explore folders based on your goal (Study, Work, Immigration, etc.)
-
-Follow step-by-step resources ✨
-
-Contribute new updates or country guides 🌍
-
-🤝 Contributing
-Your knowledge can help thousands of people moving abroad!
-
-Fork this repo
-
-Add or update resources
-
-Open a Pull Request 🚀
-
-We value community-driven updates 💡
-
-📜 License
-This project is licensed under the MIT License – free to use & share.
-
-<h3 align="center">⭐ Found this guide useful? Give it a star to support! ⭐</h3> ```
+### Code Structure
