@@ -17,6 +17,7 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class StudentController {
 
+
     @Autowired
     private StudentService studentService;
 
