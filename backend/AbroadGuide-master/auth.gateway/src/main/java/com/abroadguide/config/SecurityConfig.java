@@ -23,7 +23,6 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.Arrays;
 import java.util.List;
 
 @Configuration
@@ -50,13 +49,32 @@ public class SecurityConfig {
                         .requestMatchers("/api/admin/**").hasRole("ADMIN")
 
                         // User endpoints
-                        .requestMatchers("/api/users/**").hasAnyRole("USER", "ADMIN")
+                        .requestMatchers("/api/users/**").hasAnyRole("USER", "ADMIN", "STUDENT")
 
                         // Student endpoints
+                        .requestMatchers(HttpMethod.POST, "/api/students/me").hasAnyRole("STUDENT", "USER")
                         .requestMatchers(HttpMethod.GET, "/api/students/**").hasAnyRole("STUDENT", "ADMIN")
                         .requestMatchers(HttpMethod.PUT, "/api/students/**").hasAnyRole("STUDENT", "ADMIN")
                         .requestMatchers(HttpMethod.POST, "/api/students/**").hasRole("ADMIN")
                         .requestMatchers(HttpMethod.DELETE, "/api/students/**").hasRole("ADMIN")
+
+                        // University endpoints
+                        .requestMatchers(HttpMethod.GET, "/api/universities/**").authenticated()
+                        .requestMatchers(HttpMethod.POST, "/api/universities/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "/api/universities/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "/api/universities/**").hasRole("ADMIN")
+
+                        // Budget endpoints
+                        .requestMatchers("/api/budgets/**").hasAnyRole("STUDENT", "ADMIN")
+
+                        // Phase 2 endpoints
+                        .requestMatchers(HttpMethod.GET, "/api/recommendations/**").hasAnyRole("STUDENT", "ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/accommodations/**").hasAnyRole("STUDENT", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/accommodations/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/transportation/**").hasAnyRole("STUDENT", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/transportation/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/api/dining/**").hasAnyRole("STUDENT", "ADMIN")
+                        .requestMatchers(HttpMethod.POST, "/api/dining/**").hasRole("ADMIN")
 
                         // All other requests need authentication
                         .anyRequest().authenticated()
@@ -73,7 +91,7 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOriginPatterns(List.of("http://localhost:3000"));
+        config.setAllowedOriginPatterns(List.of("http://localhost:3000", "http://localhost:5173"));
         config.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         config.setAllowedHeaders(List.of("*"));
         config.setAllowCredentials(true);

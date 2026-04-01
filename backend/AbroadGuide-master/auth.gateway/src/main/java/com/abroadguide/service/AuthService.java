@@ -3,6 +3,8 @@ package com.abroadguide.service;
 import com.abroadguide.dto.AuthResponse;
 import com.abroadguide.dto.LoginRequest;
 import com.abroadguide.dto.RegisterRequest;
+import com.abroadguide.exception.DuplicateResourceException;
+import com.abroadguide.exception.ResourceNotFoundException;
 import com.abroadguide.model.Role;
 import com.abroadguide.model.User;
 import com.abroadguide.repository.UserRepository;
@@ -33,7 +35,7 @@ public class AuthService {
     @Transactional
     public AuthResponse register(RegisterRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new RuntimeException("Email already registered");
+            throw new DuplicateResourceException("User", "email", request.getEmail());
         }
         User user = User.builder()
                 .email(request.getEmail())
@@ -65,7 +67,7 @@ public class AuthService {
         );
 
         User user = userRepository.findByEmail(request.getEmail())
-                .orElseThrow(() -> new RuntimeException("User not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "email", request.getEmail()));
 
         String token = jwtUtil.generateToken(user);
 

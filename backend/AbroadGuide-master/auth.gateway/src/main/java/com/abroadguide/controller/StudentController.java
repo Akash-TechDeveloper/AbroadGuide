@@ -17,16 +17,25 @@ import java.util.List;
 @CrossOrigin(origins = "*")
 public class StudentController {
 
-
     @Autowired
     private StudentService studentService;
 
+    // Admin creates a student profile for a specific user
     @PostMapping("/user/{userId}")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<StudentResponse> createStudent(
             @PathVariable Long userId,
             @Valid @RequestBody StudentRequest request) {
         StudentResponse response = studentService.createStudent(userId, request);
+        return ResponseEntity.status(HttpStatus.CREATED).body(response);
+    }
+
+    // Self-registration: authenticated student creates their own profile
+    @PostMapping("/me")
+    @PreAuthorize("hasAnyRole('STUDENT', 'USER')")
+    public ResponseEntity<StudentResponse> createOwnProfile(
+            @Valid @RequestBody StudentRequest request) {
+        StudentResponse response = studentService.createOwnProfile(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 

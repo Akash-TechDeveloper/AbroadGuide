@@ -1,6 +1,7 @@
 package com.abroadguide.service;
 
 import com.abroadguide.dto.UserResponse;
+import com.abroadguide.exception.ResourceNotFoundException;
 import com.abroadguide.model.Role;
 import com.abroadguide.model.User;
 import com.abroadguide.repository.UserRepository;
@@ -25,13 +26,13 @@ public class UserService {
 
     public UserResponse getUserById(Long id) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
         return mapToUserResponse(user);
     }
 
     public UserResponse getUserByEmail(String email) {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("User not found with email: " + email));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "email", email));
         return mapToUserResponse(user);
     }
 
@@ -50,7 +51,7 @@ public class UserService {
     @Transactional
     public UserResponse updateUser(Long id, User updatedUser) {
         User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "id", id));
 
         // Update fields
         if (updatedUser.getFirstName() != null) {
@@ -70,7 +71,7 @@ public class UserService {
     @Transactional
     public void deleteUser(Long id) {
         if (!userRepository.existsById(id)) {
-            throw new RuntimeException("User not found with id: " + id);
+            throw new ResourceNotFoundException("User", "id", id);
         }
         userRepository.deleteById(id);
     }
@@ -79,7 +80,7 @@ public class UserService {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         String email = authentication.getName();
         return userRepository.findByEmail(email)
-                .orElseThrow(() -> new RuntimeException("Current user not found"));
+                .orElseThrow(() -> new ResourceNotFoundException("User", "email", email));
     }
 
     private UserResponse mapToUserResponse(User user) {
